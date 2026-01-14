@@ -156,8 +156,6 @@ void UpdateButtonList(ButtonList *button_list) {
 
 	for(u16 i = 0; i < button_list->display_count; i++) {
 		float height_mod = (fabsf((float)(center) - i)) * 5;
-		//float dist_from_center = fabsf((button_list->display_count * 0.5f) - i);
-		//float height_quotient = 1 * dist_from_center;
 
 		Rectangle rec = (Rectangle) {
 			.x = button_list->position.x, 
@@ -175,10 +173,7 @@ void UpdateButtonList(ButtonList *button_list) {
 		font_size = Clamp(font_size, 1, _gui->font_size);
 
 		ButtonEx(rec, button_list->text[id], 0, font_size, _gui->font_spacing);
-
-		DrawCircleV((Vector2) {rec.x + rec.width - 40, (rec.y + rec.height * 0.5f) }, rec.height * 0.5f, ColorAlpha(scroll_colors[id], 0.5f));
-		//DrawText(TextFormat("%00f", height_mod), rec.x + rec.width, rec.y, 32, GREEN);
-		
+		DrawCircleV((Vector2) {rec.x + rec.width - 35, (rec.y + rec.height * 0.5f) }, rec.height * 0.45f, ColorAlpha(scroll_colors[id], 0.5f));
 		DrawRectangleRec(rec, ColorAlpha(BLACK, height_mod * 0.025f));
 	}
 }
