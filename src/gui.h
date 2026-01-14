@@ -18,6 +18,7 @@ typedef struct {
 	Vector2 entry_size;
 
 	float scroll;
+	float offset;
 
 	u16 count;
 	u16 display_count; 
@@ -43,8 +44,11 @@ void GuiSetColors(Color *colors);
 Color GuiFetchColor(u8 state, u8 control);
 
 Vector2 TextCenter(Rectangle rec, char *text);
+Vector2 TextCenterEx(Rectangle rec, char *text, float font_size, float font_spacing);
 
 bool Button(Rectangle rec, char *text, i8 icon);
+bool ButtonEx(Rectangle rec, char *text, i8 icon, float font_size, float font_spacing);
+
 void UpdateButtonList(ButtonList *button_list);
 
 #endif
