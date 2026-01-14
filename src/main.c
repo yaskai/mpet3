@@ -2,14 +2,21 @@
 #include "app.h"
 
 int main() {
+	SetTraceLogLevel(LOG_ERROR);
+
+	App app = (App) {0};
+	AppInit(&app);
+
 	SetConfigFlags(FLAG_WINDOW_HIGHDPI | FLAG_VSYNC_HINT);
-	InitWindow(1280, 800, "Raylib Project");
+	InitWindow(app.conf.ww, app.conf.wh, "Raylib Project");
 
 	while(!WindowShouldClose()) {
 		float delta_time = GetFrameTime();
 
 		BeginDrawing();
-		ClearBackground(BLACK);
+		ClearBackground(BLUE);
+
+		AppUpate(&app, delta_time);
 
 		EndDrawing();
 	}
