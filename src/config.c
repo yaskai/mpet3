@@ -35,6 +35,10 @@ void ConfigParseLine(Config *conf, char *line, i8 *block) {
 			ConfigParseLineWindow(conf, line);
 			break;
 
+		case BLOCK_TEXT:
+			ConfigParseLineText(conf, line);
+			break;
+
 		case BLOCK_COLORS:
 			ConfigParseColor(conf, line, 0);
 			break;
@@ -60,14 +64,30 @@ i8 ConfigParseLineBlock(Config *conf, char *line) {
 
 	if(streq(block_name, "window"))
 		return BLOCK_WINDOW;
+	else if (streq(block_name, "text"))
+		return BLOCK_TEXT;
 	else if (streq(block_name, "colors"))
 		return BLOCK_COLORS;
-	else if (streq(block_name, "colors1"))
+	else if (streq(block_name, "colors_hovered"))
 		return BLOCK_COLORS_HOVERED;
-	else if (streq(block_name, "colors2"))
+	else if (streq(block_name, "colors_pressed"))
 		return BLOCK_COLORS_PRESSED;
 
 	return -1;
+}
+
+void ConfigParseLineText(Config *conf, char *line) {
+	char *eq = strchr(line, '=');
+	if(!eq) return;
+	
+	*eq = '\0';
+	char *key = line;
+	char *val = eq + 1;
+
+	if(streq(key, "size"))
+		sscanf(val, "%d", &conf->font_size); 
+	else if streq(key, "spacing")
+		sscanf(val, "%d", &conf->font_spacing); 
 }
 
 void ConfigParseLineWindow(Config *conf, char *line) {
