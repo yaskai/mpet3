@@ -10,7 +10,7 @@ int main() {
 		printf("ERROR: Could not read from configuration file\n");
 
 	SetConfigFlags(FLAG_WINDOW_HIGHDPI | FLAG_VSYNC_HINT);
-	InitWindow(app.conf.ww, app.conf.wh, "Raylib Project");
+	InitWindow(app.conf.ww, app.conf.wh, "mpet3");
 
 	AppInit(&app);
 

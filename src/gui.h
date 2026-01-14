@@ -12,9 +12,22 @@ enum BUTTON_STATES : u8 {
 };
 
 typedef struct {
+	char **text;
+	
+	Vector2 position;
+	Vector2 entry_size;
+
+	float scroll;
+
+	u16 count;
+	u16 display_count; 
+	
+} ButtonList;
+
+typedef struct {
 	Font font;
 
-	Color colors[12];
+	Color colors[COLOR_COUNT * 3];
 
 	Vector2 cursor_position;
 
@@ -32,5 +45,6 @@ Color GuiFetchColor(u8 state, u8 control);
 Vector2 TextCenter(Rectangle rec, char *text);
 
 bool Button(Rectangle rec, char *text, i8 icon);
+void UpdateButtonList(ButtonList *button_list);
 
 #endif
