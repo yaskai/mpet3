@@ -12,16 +12,22 @@ enum BUTTON_STATES : u8 {
 };
 
 typedef struct {
+	RenderTexture2D render_target;
+
 	char **text;
 	
 	Vector2 position;
 	Vector2 entry_size;
 
 	float scroll;
+	float visual_scroll;
 	float offset;
-
+	float scroll_vel;
+	
 	u16 count;
 	u16 display_count; 
+
+	i8 scroll_dir;
 	
 } ButtonList;
 
@@ -47,8 +53,9 @@ Vector2 TextCenter(Rectangle rec, char *text);
 Vector2 TextCenterEx(Rectangle rec, char *text, float font_size, float font_spacing);
 
 bool Button(Rectangle rec, char *text, i8 icon);
-bool ButtonEx(Rectangle rec, char *text, i8 icon, float font_size, float font_spacing);
+bool ButtonEx(Rectangle rec, char *text, i8 icon, float font_size, float font_spacing, float alpha);
 
-void UpdateButtonList(ButtonList *button_list);
+void UpdateButtonList(ButtonList *button_list, float dt);
+void TestUpdateButtonList(float dt);
 
 #endif

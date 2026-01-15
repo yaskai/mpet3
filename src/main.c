@@ -16,13 +16,7 @@ int main() {
 
 	while(!WindowShouldClose()) {
 		float delta_time = GetFrameTime();
-
-		BeginDrawing();
-		ClearBackground(BLACK);
-
 		AppUpate(&app, delta_time);
-
-		EndDrawing();
 	}
 
 	CloseWindow();

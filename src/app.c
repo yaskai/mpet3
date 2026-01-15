@@ -9,6 +9,13 @@ void AppInit(App *app) {
 }
 
 void AppUpate(App *app, float dt) {
+	TestUpdateButtonList(dt);
+
+	BeginDrawing();
+	ClearBackground(BLACK);
+
 	GuiUpdate(&app->gui, dt);
+
+	EndDrawing();
 }
 
